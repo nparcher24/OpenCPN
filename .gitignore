@@ -36,3 +36,6 @@ wtgahrs2-bridge/wtgahrs2_bridge/
 # Log files
 *.log
 wtgahrs2-bridge/*.log
+
+# Ignore Build Dependency files
+*build-deps*
