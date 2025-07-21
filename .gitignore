@@ -20,3 +20,19 @@ cscope.out
 data/doc/local/*
 index.sh
 tags
+
+# Python virtual environments
+**/venv/
+**/env/
+**/*_bridge/
+wtgahrs2-bridge/wtgahrs2_bridge/
+
+# Python cache files
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Log files
+*.log
+wtgahrs2-bridge/*.log

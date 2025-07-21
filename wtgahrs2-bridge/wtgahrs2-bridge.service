@@ -1,0 +1,22 @@
+[Unit]
+Description=WTGAHRS2 to OpenCPN Bridge Service
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+User=hic
+Group=hic
+WorkingDirectory=/home/hic/OpenCPN/wtgahrs2-bridge
+Environment=PATH=/home/hic/OpenCPN/wtgahrs2-bridge/wtgahrs2_bridge/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+# Wait for USB device to be available
+ExecStartPre=/bin/bash -c 'for i in {1..30}; do [ -e /dev/ttyUSB0 ] && break || sleep 1; done'
+ExecStart=/home/hic/OpenCPN/wtgahrs2-bridge/wtgahrs2_bridge/bin/python /home/hic/OpenCPN/wtgahrs2-bridge/wtgahrs2_bridge.py --config /home/hic/OpenCPN/wtgahrs2-bridge/config.ini
+ExecStop=/bin/kill -TERM $MAINPID
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

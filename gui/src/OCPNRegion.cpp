@@ -2861,7 +2861,7 @@ OGdkRegion *gdk_region_polygon(const OGdkPoint *points, int n_points,
   OEdgeTable ET = {0};         /* header node for ET      */
   OEdgeTableEntry AET;         /* header node for AET     */
   OEdgeTableEntry *pETEs;      /* EdgeTableEntries pool   */
-  OScanLineListBlock SLLBlock; /* header for scanlinelist */
+  OScanLineListBlock SLLBlock = {0}; /* header for scanlinelist */
   int fixWAET = FALSE;
   OPOINTBLOCK FirstPtBlock, *curPtBlock; /* PtBlock buffers    */
   OPOINTBLOCK *tmpPtBlock;
